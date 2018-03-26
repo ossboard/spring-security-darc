@@ -1,0 +1,75 @@
+# ex) -Dspring.profiles.active=server|local
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: mybatis/postgres/*.xml
+
+spring:
+  application:
+    name: spring-security-standard-1.0
+  aop:
+    auto: true
+    proxy-target-class: true
+  datasource:
+    connectionProperties: characterEncoding=UTF-8
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://10.10.18.29:65432/postgres
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    password: postgres
+    username: postgres
+    initSQL: select 1
+    tomcat:
+      validation-query: SELECT 1
+      test-on-borrow: true
+      validation-interval: 0
+  messages:
+    basename: i18n/messages
+    cache-seconds: -1
+    encoding: UTF-8
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  redis:
+    host: 10.10.18.29
+    port: 32771
+
+  test:
+    mockmvc:
+      print: default
+
+jwt:
+  token:
+    expiration: 31536000
+    header: X-Auth-Token
+    origin: local
+    secret: __konantech__
+
+permission:
+  action: VTT_LOGIN
+
+darc:
+  url: http://10.10.18.13:5499/ws/darc
+  clientType: 26
+  specialflag: oun
+
+
+mam:
+  mamex:
+    ssologin: <mamex_request><ex_sso_login><username>{0}</username><ip>{1}</ip><sessionid>{2}</sessionid></ex_sso_login></mamex_request>
+    oun_ex_getworkflowlist: <mamex_request>\r\n<oun_ex_getworkflowlist>\r\n<assettype>{0}</assettype>\r\n<assetid>{1}</assetid>\r\n</oun_ex_getworkflowlist>\r\n</mamex_request>
+    metaset: <?xml version="1.0" encoding="utf-8"?>\r\n<kscc_root>\r\n<metaset>{0}</metaset>\r\n</kscc_root>
+  session:
+    search: <?xml version="1.0" ?>\r\n<kscc_request>\r\n<search>\r\n<selectmode>aliveonly</selectmode>\r\n<pageindex>{0}</pageindex>\r\n<maxcount>{1}</maxcount>\r\n<option>{2}{3}</option>\r\n<searchviewname>{4}</searchviewname>\r\n</search>\r\n</kscc_request>
+    search_sort : <sortfilter field="{0}" asc="{1}"/>
+  insert:
+    userInfo: <?xml version="1.0" encoding="utf-8"?><kscc_root><user><password encrypt="true">{0}</password></user></kscc_root>
+
+---
+spring:
+  profiles: developer
+#
+#spring:
+#  datasource:
+#    driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    url: jdbc:log4jdbc:postgresql://10.10.18.29:65432/postgres
