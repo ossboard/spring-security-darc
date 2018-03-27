@@ -9,10 +9,7 @@ import com.konantech.spring.darcLib.model.*;
 import com.konantech.spring.darcLib.query.Query;
 import com.konantech.spring.darcLib.query.SearchControls;
 import com.konantech.spring.darcLib.service.DarcPort;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.TestContext;
@@ -82,21 +79,17 @@ public class DarcSoapTest extends CommonTests {
         printObj(result);
     }
 
-    /* specialflag 는 앞으로 사용금지 */
-    @Test
+
+    @Test /* specialflag 는 앞으로 사용금지 */
     public void role1() throws Exception {
         DarcSpecialUserAuthorityList specialUserAuthorityList = darcPort.getSpecialUserAuthorityList(sessionid, specialflag);
         printList(specialUserAuthorityList.getGetspecialuserauthoritylist().getAuthority());
-        System.out.println(darcPortType.getSpecialUserAuthorityList(00000, specialflag));
-        System.out.println(specialUserAuthorityList.getGetspecialuserauthoritylist().getAuthority().size());
     }
 
-    @Test
+    @Ignore /* 신규서버만 지원 */
     public void role2() throws Exception {
         DarcUserAuthorityList userAuthorityList = darcPort.getUserAuthorityList(sessionid);
         printList(userAuthorityList.getGetuserauthoritylist().getAuthority());
-        System.out.println(darcPortType.getUserAuthorityList(00000));
-        System.out.println(userAuthorityList.getGetuserauthoritylist().getAuthority().size());
     }
 
     @Test

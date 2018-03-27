@@ -32,8 +32,10 @@ public class CommonTests  {
 
     }
     public static void printList(List<?> list) {
-        for (Object obj : list) {
-            printObj(obj);
+        if(list != null) {
+            for (Object obj : list) {
+                printObj(obj);
+            }
         }
     }
 
