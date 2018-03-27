@@ -253,8 +253,6 @@ public class DarcSoapTest extends CommonTests {
 
     @Test
     public void test() throws Exception {
-        String requestxml = MessageFormat.format(mamProfiles.getMamex().getSsologin(), "a","b","c");
-        System.out.println(requestxml);
     }
 
 
