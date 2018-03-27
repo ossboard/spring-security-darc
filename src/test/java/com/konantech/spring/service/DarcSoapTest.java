@@ -2,17 +2,18 @@ package com.konantech.spring.service;
 
 import _1._0._0._127.darc_wsdl.DarcPortType;
 import com.konantech.spring.CommonTests;
-import com.konantech.spring.config.MamProfiles;
 import com.konantech.spring.darcLib.SchemaViewManager;
 import com.konantech.spring.darcLib.builder.RequestBuilder;
 import com.konantech.spring.darcLib.model.*;
 import com.konantech.spring.darcLib.query.Query;
 import com.konantech.spring.darcLib.query.SearchControls;
 import com.konantech.spring.darcLib.service.DarcPort;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.TestContext;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -21,9 +22,6 @@ import java.text.MessageFormat;
 import java.util.Properties;
 
 public class DarcSoapTest extends CommonTests {
-
-    @Autowired
-    private MamProfiles mamProfiles;
 
     @Autowired
     private DarcPort darcPort;

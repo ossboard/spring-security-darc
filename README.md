@@ -19,6 +19,9 @@ Gradle 4.x 이상 (5.x 지원함)
 ## jdk
 jdk 1.8 이상
 
+## tomcat
+tomcat 8.0 이상
+
 
 ## darc soap 방식 개선
 
