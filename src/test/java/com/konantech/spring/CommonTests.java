@@ -8,23 +8,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.support.AbstractTestExecutionListener;
 
 import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CommonTests {
-
+public class CommonTests  {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Test
     public void CommonTests() throws Exception {
 
     }
-
-
-    public void printObj(Object obj) {
+    public static void printObj(Object obj) {
 
         if (obj instanceof Map) {
             System.out.println(obj);
@@ -33,8 +31,7 @@ public class CommonTests {
         }
 
     }
-
-    public void printList(List<?> list) {
+    public static void printList(List<?> list) {
         for (Object obj : list) {
             printObj(obj);
         }

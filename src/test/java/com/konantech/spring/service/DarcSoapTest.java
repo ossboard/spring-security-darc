@@ -9,9 +9,13 @@ import com.konantech.spring.darcLib.model.*;
 import com.konantech.spring.darcLib.query.Query;
 import com.konantech.spring.darcLib.query.SearchControls;
 import com.konantech.spring.darcLib.service.DarcPort;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.TestContext;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -19,7 +23,7 @@ import java.io.StringReader;
 import java.text.MessageFormat;
 import java.util.Properties;
 
-public class DarcSoapTest extends CommonTests{
+public class DarcSoapTest extends CommonTests {
 
     @Autowired
     private MamProfiles mamProfiles;
@@ -30,14 +34,26 @@ public class DarcSoapTest extends CommonTests{
     @Autowired
     private DarcPortType darcPortType;
 
-    private int sessionid = 822;
+    private int sessionid;
     private String specialflag = "oun";
 
     private String userName = "konan";
     private String password = "konan1";
 
     @Value("${darc.clientType}")
-    private int clientType;
+    private static int clientType;
+
+    @Before
+    public void before() throws Exception {
+        DarcLogIn darcLogIn = darcPort.logIn(clientType, userName, password);
+        sessionid = darcLogIn.getLogin().getSessionid();
+    }
+
+    @After
+    public void after() throws Exception {
+        darcPort.logOut(sessionid);
+    }
+
 
     @Test
     public void login1() throws Exception {

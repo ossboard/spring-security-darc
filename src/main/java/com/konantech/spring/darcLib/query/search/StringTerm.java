@@ -1,8 +1,5 @@
 package com.konantech.spring.darcLib.query.search;
 
-import lombok.Data;
-
-@Data
 public class StringTerm extends PropertyTerm {
 
     private static final long serialVersionUID = -7231828182644780526L;
@@ -25,4 +22,19 @@ public class StringTerm extends PropertyTerm {
         this.ignoreCase = ignoreCase;
     }
 
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public boolean isIgnoreCase() {
+        return ignoreCase;
+    }
+
+    public void setIgnoreCase(boolean ignoreCase) {
+        this.ignoreCase = ignoreCase;
+    }
 }
